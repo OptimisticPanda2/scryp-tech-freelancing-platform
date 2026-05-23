@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.io.File;
 import java.io.IOException;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +28,8 @@ public class UserController
     {
         this.userService = userService;
     }
+    @Autowired
+    UserRepository userRepository;
     // request to get all user
     @GetMapping("/user")
     public Page<UserResponseDTO> getAllUser( Pageable pageable) {
@@ -46,7 +49,7 @@ public class UserController
         return  "User Deleted Successfully";
     }
     //request to update user details
-    @PatchMapping ("/user")
+    @PatchMapping ("/user/{id}")
     public ResponseEntity<User> updatePartialUser(@PathVariable int id, @RequestBody User user ) {
        User checkUser = userService.findUserById(id);
        if(user!=null)
@@ -55,18 +58,45 @@ public class UserController
        else{return ResponseEntity.notFound().build();}
     }
     // request to upload image of user
-    @PostMapping("/upload")
-    public String uploadFile(@RequestParam("file") MultipartFile file)throws IOException
+    @PostMapping("/upload-profile")
+    public String uploadProfilePhoto(
+            @RequestParam("file")
+            MultipartFile file)
+            throws IOException
     {
-        String folderPath = "E:\\uploads\\";
-        File folder = new File(folderPath);
+        String email =
+                SecurityContextHolder
+                        .getContext()
+                        .getAuthentication()
+                        .getName();
+
+        User user =
+                userRepository.findByEmail(email);
+
+        String folderPath =
+                "E:\\uploads\\";
+
+        File folder =
+                new File(folderPath);
+
         if(!folder.exists())
         {
             folder.mkdir();
         }
-        String filePath = folderPath + file.getOriginalFilename();
-        file.transferTo(new File(filePath));
-        return "Saved at : " +filePath;
+
+        String filePath =
+                folderPath
+                        + file.getOriginalFilename();
+
+        file.transferTo(
+                new File(filePath)
+        );
+
+        user.setProfilePhoto(filePath);
+
+        userRepository.save(user);
+
+        return "Profile photo uploaded";
     }
     // request to check verification of Email
     @GetMapping("/verify")
@@ -81,5 +111,18 @@ public class UserController
     )
     {
         return userService.forgotPassword(email);
+    }
+    // request to get the profile of current logged in user
+    @GetMapping("/my-profile")
+    public ProfileDTO getMyProfile()
+    {
+        String email =
+                SecurityContextHolder
+                        .getContext()
+                        .getAuthentication()
+                        .getName();
+
+        return userService
+                .getMyProfile(email);
     }
 }

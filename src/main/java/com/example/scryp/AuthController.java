@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.security.core.context.SecurityContextHolder;
+import java.util.Map;
+import java.util.HashMap;
 
+@CrossOrigin
 @RestController
 public class AuthController {
     private final UserService userService;
@@ -22,7 +25,7 @@ public class AuthController {
     }
     // request to login user
     @PostMapping("/auth/login")
-    public String login(@RequestBody LoginRequest request)
+    public Map<String,String> login(@RequestBody LoginRequest request)
     {
         return userService.login(request);
     }

@@ -17,6 +17,7 @@ public class User implements UserDetails {
     private boolean verified = false;
     private String verificationToken;
     private String resetToken;
+    private String profilePhoto;
     @OneToMany(mappedBy = "user")
     List<ServiceEntity> services;
     @OneToMany(mappedBy = "client")
@@ -108,6 +109,14 @@ public class User implements UserDetails {
 
     public String getResetToken() {
         return resetToken;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 
     public void setResetToken(String resetToken) {

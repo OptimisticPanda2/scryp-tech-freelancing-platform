@@ -6,6 +6,7 @@ public class UserResponseDTO {
     public String name;
     public String title;
     public String role;
+
     @JsonIgnore
     private String password;
     public String description;

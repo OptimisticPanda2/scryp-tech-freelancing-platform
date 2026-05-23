@@ -9,4 +9,6 @@ ServiceEntity findById(int id);
 List<ServiceEntity> findByCategoryContainingIgnoreCase(String category);
 List<ServiceEntity> findByTechStackContainingIgnoreCase(String techStack);
 List<ServiceEntity> findAll();
+    List<ServiceEntity>
+    findByUser(User user);
 }

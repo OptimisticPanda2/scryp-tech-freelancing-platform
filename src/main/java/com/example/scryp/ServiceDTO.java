@@ -30,7 +30,6 @@ public class ServiceDTO {
     @NotBlank(message = "Github link is required")
     private String githubLink;
 
-    @NotBlank(message = "Demo video link is required")
     private String demoVideoLink;
 
     @NotBlank(message = "Portfolio link is required")

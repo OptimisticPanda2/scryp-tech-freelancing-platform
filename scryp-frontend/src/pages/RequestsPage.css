@@ -1,0 +1,181 @@
+.request-page{
+
+  min-height:100vh;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  padding:120px 5%;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #081120,
+      #020617
+    );
+}
+
+/* CARD */
+
+.request-card{
+
+  width:100%;
+
+  max-width:700px;
+
+  padding:45px;
+
+  border-radius:30px;
+
+  background:
+    rgba(255,255,255,0.05);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(25px);
+
+  box-shadow:
+    0 0 40px rgba(0,255,255,0.08);
+}
+
+/* TITLE */
+
+.request-card h1{
+
+  color:#00f5ff;
+
+  font-size:2.5rem;
+
+  margin-bottom:15px;
+
+  text-align:center;
+}
+
+.request-card p{
+
+  text-align:center;
+
+  color:#cbd5e1;
+
+  margin-bottom:35px;
+}
+
+/* FORM */
+
+.request-card form{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:22px;
+}
+
+/* INPUT */
+
+.request-card input,
+.request-card textarea{
+
+  width:100%;
+
+  padding:18px;
+
+  border-radius:18px;
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  background:
+    rgba(255,255,255,0.05);
+
+  color:white;
+
+  font-size:1rem;
+
+  outline:none;
+
+  transition:0.3s;
+}
+
+.request-card textarea{
+
+  height:160px;
+
+  resize:none;
+}
+
+/* FOCUS */
+
+.request-card input:focus,
+.request-card textarea:focus{
+
+  border:
+    1px solid #00f5ff;
+
+  box-shadow:
+    0 0 18px rgba(0,255,255,0.18);
+}
+
+/* BUTTON */
+
+.request-btn{
+
+  border:none;
+
+  padding:18px;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00f5ff,
+      #8b5cf6
+    );
+
+  color:black;
+
+  font-weight:700;
+
+  font-size:1rem;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.request-btn:hover{
+
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 0 25px rgba(0,255,255,0.25);
+}
+
+/* GLASS */
+
+.glass{
+
+  backdrop-filter:blur(25px);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .request-card{
+
+    padding:30px;
+  }
+
+  .request-card h1{
+
+    font-size:2rem;
+  }
+
+}

@@ -64,6 +64,18 @@ public class ServiceController {
     {
         return userService.addRating(id,stars);
     }
+    //request mapping to see my own services
+    @GetMapping("/my-services")
+    public List<ServiceResponseDTO>
+    getMyServices()
+    {
+        String email =
+                SecurityContextHolder
+                        .getContext()
+                        .getAuthentication()
+                        .getName();
 
+        return userService.getMyServices(email);
+    }
 
 }

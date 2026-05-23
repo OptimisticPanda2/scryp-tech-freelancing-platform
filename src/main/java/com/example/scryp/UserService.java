@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageImpl;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.UUID;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -137,7 +139,7 @@ public class UserService {
     }
 
     // method for login request
-    public String login(LoginRequest request) {
+    public Map<String,String> login(LoginRequest request) {
         User user = userRepository.findByEmail(request.getEmail());
         if (user == null) {
             throw new UserNotFoundException("User Not Found");
@@ -146,11 +148,14 @@ public class UserService {
                 request.getPassword(),
                 user.getPassword()
         );
+        String token = jwtUtil.generateToken(user.getEmail()); // token generation
+        String raul = user.getRole();
         if (!match) {
             throw new RuntimeException("Invalid Password");
         }
-
-        return jwtUtil.generateToken(user.getEmail());
+        Map<String , String> jMap = new HashMap<>();
+        jMap.put(token ,"Welcome " +raul);
+        return jMap;
     }
 // method to add service after successfully login
 public String createService(ServiceDTO dto, String email) {
@@ -415,6 +420,89 @@ public String createService(ServiceDTO dto, String email) {
                 "http://localhost:8080/reset-password?token="+token
         );
         return "Reset Password mail sent";
+    }
+    // method to show the servies of logged in user
+    public List<ServiceResponseDTO>
+    getMyServices(String email)
+    {
+        User user =
+                userRepository.findByEmail(email);
+
+        List<ServiceEntity> services =
+                serviceRepository.findByUser(user);
+
+        List<ServiceResponseDTO> response =
+                new ArrayList<>();
+
+        for(ServiceEntity service : services)
+        {
+            ServiceResponseDTO dto =
+                    new ServiceResponseDTO();
+
+            dto.setTitle(service.getTitle());
+
+            dto.setDescription(
+                    service.getDescription()
+            );
+
+            dto.setPrice(service.getPrice());
+
+            dto.setCategory(
+                    service.getCategory()
+            );
+
+            dto.setTechStack(
+                    service.getTechStack()
+            );
+
+            dto.setGithubLink(
+                    service.getGithubLink()
+            );
+
+            dto.setDemoVideoLink(
+                    service.getDemoVideoLink()
+            );
+
+            dto.setPortfolioLink(
+                    service.getPortfolioLink()
+            );
+
+            dto.setRating(
+                    service.getRating()
+            );
+
+            dto.setTotalRatings(
+                    service.getTotalRatings()
+            );
+
+            response.add(dto);
+        }
+
+        return response;
+    }
+    // method to check the profile of current logged in user
+    public ProfileDTO getMyProfile(
+            String email)
+    {
+        User user =
+                userRepository.findByEmail(email);
+
+        ProfileDTO dto =
+                new ProfileDTO();
+
+        dto.setName(user.getName());
+
+        dto.setEmail(user.getEmail());
+
+        dto.setRole(user.getRole());
+
+        dto.setVerified(user.isVerified());
+
+        dto.setProfilePhoto(
+                user.getProfilePhoto()
+        );
+
+        return dto;
     }
 }
 
