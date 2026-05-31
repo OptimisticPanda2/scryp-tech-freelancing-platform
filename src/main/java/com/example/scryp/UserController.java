@@ -57,47 +57,57 @@ public class UserController
         return ResponseEntity.ok(updatedUser);}
        else{return ResponseEntity.notFound().build();}
     }
-    // request to upload image of user
-    @PostMapping("/upload-profile")
-    public String uploadProfilePhoto(
-            @RequestParam("file")
-            MultipartFile file)
-            throws IOException
-    {
-        String email =
-                SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getName();
+   // Request to upload phot
+   @PostMapping("/upload")
+   public String uploadFile(
+           @RequestParam("file")
+           MultipartFile file
+   )throws IOException
+   {
 
-        User user =
-                userRepository.findByEmail(email);
+       String email =
+               SecurityContextHolder
+                       .getContext()
+                       .getAuthentication()
+                       .getName();
 
-        String folderPath =
-                "E:\\uploads\\";
+       User user =
+               userRepository.findByEmail(email);
 
-        File folder =
-                new File(folderPath);
+       String folderPath =
+               "E:\\uploads\\";
 
-        if(!folder.exists())
-        {
-            folder.mkdir();
-        }
+       File folder =
+               new File(folderPath);
 
-        String filePath =
-                folderPath
-                        + file.getOriginalFilename();
+       if(!folder.exists())
+       {
+           folder.mkdir();
+       }
 
-        file.transferTo(
-                new File(filePath)
-        );
+       String fileName =
+               System.currentTimeMillis()
+                       + "_"
+                       + file.getOriginalFilename();
 
-        user.setProfilePhoto(filePath);
+       String filePath =
+               folderPath + fileName;
 
-        userRepository.save(user);
+       file.transferTo(
+               new File(filePath)
+       );
 
-        return "Profile photo uploaded";
-    }
+       // SAVE RELATIVE PATH
+
+       user.setProfilePhoto(
+               "uploads/" + fileName
+       );
+
+       userRepository.save(user);
+
+       return "Photo Uploaded Successfully";
+
+   }
     // request to check verification of Email
     @GetMapping("/verify")
     public String verification(@RequestParam String token)
@@ -125,4 +135,30 @@ public class UserController
         return userService
                 .getMyProfile(email);
     }
+    // request to addd bulk users
+    @PostMapping("/bulk-users")
+    public String bulkCreateUsers(
+            @RequestBody List<CreateUserDTO> users)
+    {
+        for(CreateUserDTO dto : users)
+        {
+            userService.register(dto);
+        }
+
+        return "Bulk users added";
+    }
+    // api to give full object of the logged in user
+    @GetMapping("/user/me")
+    public User getLoggedInUser() {
+
+        String email =
+                SecurityContextHolder
+                        .getContext()
+                        .getAuthentication()
+                        .getName();
+
+        return userRepository
+                .findByEmail(email);
+    }
+
 }

@@ -77,5 +77,18 @@ public class ServiceController {
 
         return userService.getMyServices(email);
     }
+    @PostMapping("/bulk-services")
+    public String bulkCreateServices(
+            @RequestBody List<ServiceDTO> services)
+    {
+        for(ServiceDTO dto : services)
+        {
+            userService.createService(
+                    dto,
+                    dto.getEmail()
+            );
+        }
 
+        return "Bulk services added";
+    }
 }

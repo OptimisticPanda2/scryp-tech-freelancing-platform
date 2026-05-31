@@ -9,6 +9,7 @@ public class UserResponseDTO {
 
     @JsonIgnore
     private String password;
+
     public String description;
     public int price;
     public String email;

@@ -35,6 +35,7 @@ public class ServiceDTO {
     @NotBlank(message = "Portfolio link is required")
     private String portfolioLink;
 
+    private String email;
     // GETTERS AND SETTERS
 
 
@@ -108,5 +109,13 @@ public class ServiceDTO {
 
     public void setPortfolioLink(String portfolioLink) {
         this.portfolioLink = portfolioLink;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

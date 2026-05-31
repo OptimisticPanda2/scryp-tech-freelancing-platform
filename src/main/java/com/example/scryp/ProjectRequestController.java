@@ -19,35 +19,42 @@ public class ProjectRequestController {
     {
         this.userService = userService;
     }
-
+// request to send the request for work
      @PostMapping("/request/send")
-   public String sendRequest(@Valid @RequestBody ProjectRequestDTO dto)
-    {
-        String email = SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getName();
+     public String sendRequest(@Valid @RequestBody ProjectRequestDTO dto)
+     {
+         String email = SecurityContextHolder
+                 .getContext()
+                 .getAuthentication()
+                 .getName();
          return userService.sendRequest(dto,email);
-    }
-
+     }
+// request to update the status of request recieved
     @PatchMapping("/project-request/{id}")
     public String updateProjectRequestStatus(@PathVariable int id , @RequestParam String status)
     {
         return userService.updateProjectRequestStatus(id,status);
     }
 
+    // request to see all the sent requests
     @GetMapping("/client/requests")
-    public List<ProjectRequest> getClientRequests()
+    public List<ClientRequestDTO>
+    getClientRequests()
     {
-        String email = SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getName();
-        return userService.getClientRequest(email);
-    }
 
+        String email =
+                SecurityContextHolder
+                        .getContext()
+                        .getAuthentication()
+                        .getName();
+
+        return userService
+                .getClientRequest(email);
+
+    }
+// request to see all the request recieved by the freelancer
     @GetMapping("/freelancer/requests")
-    public List<ProjectRequest> getFreelancerRequests()
+    public List<FreelancerRequestDTO> getFreelancerRequests()
     {
         String email = SecurityContextHolder
                 .getContext()

@@ -1,6 +1,7 @@
 package com.example.scryp;
 
 public class ServiceResponseDTO {
+   private int serviceId;
     private String title;
     private String description;
     private int price;
@@ -12,10 +13,19 @@ public class ServiceResponseDTO {
     private String demoVideoLink;
     private String portfolioLink;
 
+    private int freelancerId;
     private String freelancerName;
 
     private double rating;
     private int totalRatings;
+
+    public int getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
+    }
 
     public String getTitle() {
         return title;
@@ -91,6 +101,14 @@ public class ServiceResponseDTO {
 
     public double getRating() {
         return rating;
+    }
+
+    public int getFreelancerId() {
+        return freelancerId;
+    }
+
+    public void setFreelancerId(int freelancerId) {
+        this.freelancerId = freelancerId;
     }
 
     public void setRating(double rating) {

@@ -30,9 +30,10 @@ private JwtAuthEntryPoint jwtAuthEntryPoint;
                 .httpBasic(basic -> basic.disable())
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthEntryPoint))
                 .authorizeHttpRequests(auth -> auth
+
                         .requestMatchers(
                                 "/auth/login",
-                                "/auth/**").permitAll()
+                                "/auth/**","/forgot-password").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

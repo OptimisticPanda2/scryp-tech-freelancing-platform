@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Size;
 public class ProjectRequestDTO {
 
     private int serviceId;
+    private int clientId;
     @NotBlank(message = "Project title is required")
     @Size(min = 3, max = 100, message = "Title must be between 3 to 100 characters")
     private String projectTitle;
@@ -18,7 +19,7 @@ public class ProjectRequestDTO {
     @Min(value = 100, message = "Budget must be greater than 100")
     private double budget;
 
-    @NotBlank(message = "Status is required")
+
     private String status;
 
     // GETTERS AND SETTERS
@@ -30,6 +31,14 @@ public class ProjectRequestDTO {
 
     public void setServiceId(int serviceId) {
         this.serviceId = serviceId;
+    }
+
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public String getProjectTitle() {

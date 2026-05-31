@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.UUID;
+import java.io.File;
+import java.io.IOException;
+import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Service
@@ -214,30 +217,30 @@ public String createService(ServiceDTO dto, String email) {
                 }
 
    //method for sending requests
-    public String sendRequest(ProjectRequestDTO dto , String email)
-    {
-        User client = userRepository.findByEmail(email);
-         ServiceEntity service = serviceRepository.findById(dto.getServiceId());
+   public String sendRequest(ProjectRequestDTO dto , String email)
+   {
+       User client = userRepository.findByEmail(email);
+       ServiceEntity service = serviceRepository.findById(dto.getServiceId());
 
-        if (service !=null)
-        {
-            User freelancer = service.getUser();
-            ProjectRequest request = new ProjectRequest();
-            request.setClient(client);
-            request.setFreelancer(freelancer);
-            request.setService(service);
-            request.setDescription(dto.getDescription());
-            request.setProjectTitle(dto.getProjectTitle());
-            request.setBudget(dto.getBudget());
-            request.setStatus("PENDING");
-            projectRequestRepository.save(request);
-            return "Request Sent Successfully";
-        }
-        else
-        {
+       if (service !=null)
+       {
+           User freelancer = service.getUser();
+           ProjectRequest request = new ProjectRequest();
+           request.setClient(client);
+           request.setFreelancer(freelancer);
+           request.setService(service);
+           request.setDescription(dto.getDescription());
+           request.setProjectTitle(dto.getProjectTitle());
+           request.setBudget(dto.getBudget());
+           request.setStatus("PENDING");
+           projectRequestRepository.save(request);
+           return "Request Sent Successfully";
+       }
+       else
+       {
            return "Service Not Found";
-        }
-    }
+       }
+   }
     // method for updating the request status e.g Accepted/Rejected
     public String updateProjectRequestStatus(int id , String status)
     {
@@ -252,17 +255,110 @@ public String createService(ServiceDTO dto, String email) {
         return "Project Request Status Updated";
     }
     //method for client to check the status of the requests
-    public List<ProjectRequest> getClientRequest(String email)
+    public List<ClientRequestDTO>
+    getClientRequest(String email)
     {
-        User client = userRepository.findByEmail(email);
 
-        return projectRequestRepository.findByClient(client);
+        User client =
+                userRepository.findByEmail(email);
+
+        List<ProjectRequest> requests =
+                projectRequestRepository
+                        .findByClient(client);
+
+        List<ClientRequestDTO>
+                response = new ArrayList<>();
+
+        for(ProjectRequest req : requests)
+        {
+
+            ClientRequestDTO dto =
+                    new ClientRequestDTO();
+
+            dto.setRequestId(req.getId());
+
+            dto.setProjectTitle(
+                    req.getProjectTitle()
+            );
+
+            dto.setDescription(
+                    req.getDescription()
+            );
+
+            dto.setBudget(
+                    req.getBudget()
+            );
+
+            dto.setStatus(
+                    req.getStatus()
+            );
+
+            // FREELANCER
+
+            dto.setFreelancerId(
+                    req.getFreelancer().getId()
+            );
+
+            dto.setFreelancerName(
+                    req.getFreelancer().getName()
+            );
+
+            // SERVICE
+
+            dto.setServiceId(
+                    req.getService().getId()
+            );
+
+            dto.setServiceTitle(
+                    req.getService().getTitle()
+            );
+
+            response.add(dto);
+
+        }
+
+        return response;
+
     }
-    public List<ProjectRequest> getFreelancerRequest(String email)
+    // method to see all the request recieved by the freelancer after successfully login
+    public List<FreelancerRequestDTO> getFreelancerRequest(String email)
     {
         User freelancer = userRepository.findByEmail(email);
-        return projectRequestRepository.findByFreelancer(freelancer);
+
+
+        List<ProjectRequest> requests = projectRequestRepository.findByFreelancer(freelancer);
+
+        List<FreelancerRequestDTO> response = new ArrayList<>();
+
+        for (ProjectRequest req : requests)
+        {
+            FreelancerRequestDTO dto = new FreelancerRequestDTO();
+
+
+            dto.setRequestId(req.getId());
+            dto.setProjectTitle(req.getProjectTitle());
+            dto.setDescription(req.getDescription());
+            dto.setBudget(req.getBudget());
+            dto.setStatus(req.getStatus());
+
+            // CLIENT DETAILS
+            if (req.getClient() != null) {
+                dto.setClientId(req.getClient().getId());
+                dto.setClientName(req.getClient().getName());
+            }
+
+            // SERVICE DETAILS
+            if (req.getService() != null) {
+                dto.setServiceId(req.getService().getId());
+                dto.setServiceTitle(req.getService().getTitle());
+            }
+
+            response.add(dto);
+        }
+
+        return response;
     }
+
     // method to find the service by TechStack
     public List<ServiceEntity> searchByTechStack(String techStack)
     {
@@ -286,6 +382,7 @@ public String createService(ServiceDTO dto, String email) {
         {
             ServiceResponseDTO dto = new ServiceResponseDTO();
 
+           dto.setServiceId(service.getId());
             dto.setTitle(service.getTitle());
             dto.setDescription(service.getDescription());
             dto.setPrice(service.getPrice());
@@ -298,6 +395,7 @@ public String createService(ServiceDTO dto, String email) {
             dto.setPortfolioLink(service.getPortfolioLink());
 
             dto.setFreelancerName(service.getUser().getName());
+            dto.setFreelancerId(service.getUser().getId());
             dto.setRating(
                     service.getRating()
             );
@@ -504,6 +602,27 @@ public String createService(ServiceDTO dto, String email) {
 
         return dto;
     }
+
+// method to upload profile photo
+public String uploadProfilePhoto( MultipartFile file, String email ) throws IOException
+{ User user = userRepository.findByEmail(email);
+    if(user == null)
+    { return "User Not Found"; }
+    // FOLDER
+    String folderPath = "E:\\uploads\\";
+     File folder = new File(folderPath);
+     if(!folder.exists()) { folder.mkdirs(); }
+    // UNIQUE FILE NAME
+    String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+    // COMPLETE PATH
+    String filePath = folderPath + fileName;
+    // SAVE FILE
+    file.transferTo( new File(filePath) );
+    // SAVE IN DATABASE
+    user.setProfilePhoto(fileName);
+    userRepository.save(user);
+    return "Profile Photo Uploaded Successfully"; }
+
 }
 
 
