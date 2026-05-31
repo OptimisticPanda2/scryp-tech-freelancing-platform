@@ -1,75 +1,70 @@
-# SCRYP -Tech Freelancing Platform (Backend )
+# SCRYP Frontend 
 
-SCRYP is a backend-based freelancing platform focused on tech and cybersecurity related  services.
+SCRYP is a backend-driven freelancing platform for tech-related services.  
+This repository contains the **frontend built using React.js**, designed to interact with a secure Spring Boot backend.
 
-The project is built using Spring Boot and follows real-world backend architecture concepts such as JWT Authentication, role-based access, DTO mapping, pagination, validation, and secure API handling.
-
----
-
-# Features
-
-- JWT Authentication
-- Secure Login/Register System
-- BCrypt Password Encryption
-- Role-Based Access (Client / Freelancer)
-- Service Creation & Management
-- Project Request System
-- Pagination Support
-- Global Exception Handling
-- Rating System
-- DTO Architecture
-- Spring Security Integration
+The goal of this project is to simulate a real-world freelancing system with proper authentication, role-based access, and clean API integration.
 
 ---
 
-# Tech Stack
+## Project Overview
 
-- Java
-- Spring Boot
-- Spring Security
-- JWT
-- Hibernate / JPA
-- MySQL
-- Maven
-- Postman
+SCRYP frontend focuses on building a real-world user experience where:
 
----
+- Users can login/register securely
+- Roles like Client and Freelancer are handled properly
+- Routes are protected based on authentication
+- Data is fetched and managed through secure APIs
 
-# Project Structure
-
-- Controller Layer
-- Service Layer
-- Repository Layer
-- DTO Layer
-- Entity Layer
-- Security Layer
+This is not just a UI project — it is designed to behave like a production-level application.
 
 ---
 
-# Authentication
+## Tech Stack
 
-Protected APIs require JWT token authentication.
-
-After login:
-- Token is generated
-- Token must be added in Authorization header
-
-Example:
-Authorization: Bearer <token>
+- React.js
+- JavaScript (ES6+)
+- Axios (API calls)
+- React Router DOM
+- CSS
+- JWT-based authentication (backend integration with Spring Boot)
 
 ---
 
-# Future Improvements
+##  Features
 
-- Email Verification
-- File Upload System
-- Freelancer Portfolio Verification
-- Admin Panel
-- Chat System
-- Payment Integration
+- User Authentication (Login / Register UI)
+- JWT Token Handling
+- Protected Routes
+- Role-Based Access Control (Client / Freelancer)
+- API Integration with Backend
+- Dynamic State Management
+- Clean and Responsive UI Structure
 
 ---
 
-# Author
+## What I Learned
 
-Developed by :  PRIYANSHU SHARMA
+While building this frontend, I understood:
+
+- How frontend communicates with backend APIs
+- How authentication flow works in real applications
+- How token-based systems protect routes
+- How small mistakes in state handling can break the whole flow
+- How real-world debugging actually happens in production-level apps
+
+---
+
+##  Future Improvements
+
+- Chat system between users
+- Payment gateway integration
+- Freelancer portfolio verification
+- Admin dashboard
+- Better UI/UX improvements
+
+---
+
+##  Demo
+
+Add your demo video link here:
