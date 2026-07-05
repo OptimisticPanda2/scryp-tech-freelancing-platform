@@ -78,7 +78,7 @@ The objective of this project is not only to build an attractive UI but also to 
 
 ## 📂 Project Structure
 
-```
+
 src/
 │
 ├── assets/
@@ -91,13 +91,13 @@ src/
 ├── utils/
 ├── styles/
 └── App.js
-```
+
 
 ---
 
 ## 🔄 Authentication Workflow
 
-```
+
 User Login
      │
      ▼
@@ -114,7 +114,6 @@ Protected Routes
      │
      ▼
 Authorized User Access
-```
 
 ---
 
@@ -122,33 +121,33 @@ Authorized User Access
 
 ### Clone the Repository
 
-```bash
+
 git clone https://github.com/OptimisticPanda2/scryp-frontend.git
-```
+
 
 ### Navigate to the Project
 
-```bash
+
 cd scryp-frontend
-```
+
 
 ### Install Dependencies
 
-```bash
+
 npm install
-```
+
 
 ### Start Development Server
 
-```bash
+
 npm start
-```
+
 
 Application will run on:
 
-```
+
 http://localhost:3000
-```
+
 
 ---
 
