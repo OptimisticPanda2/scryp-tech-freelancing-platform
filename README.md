@@ -1,130 +1,132 @@
 # 🚀 SCRYP Frontend
 
-A modern React.js frontend for **SCRYP**, a full-stack freelancing platform built to simulate a production-ready marketplace where clients and freelancers can collaborate securely.
+> A modern React.js frontend for SCRYP — a full-stack freelancing platform designed to simulate a real-world marketplace where clients and freelancers can collaborate securely.
 
-The frontend communicates with a secure Spring Boot backend using REST APIs and JWT authentication while providing a clean, responsive, and role-based user experience.
-
----
-
-# 📌 Overview
-
-SCRYP is designed to replicate how modern freelance platforms operate by implementing secure authentication, role-based authorization, protected routes, and seamless backend integration.
-
-The primary objective of this project is to build a scalable frontend that follows industry-standard practices and integrates with an enterprise-level backend architecture.
+The frontend communicates with a secure Spring Boot backend using REST APIs and JWT authentication, providing a clean, responsive, and role-based user experience.
 
 ---
 
-# ✨ Features
+## 📖 About The Project
 
-### 🔐 Authentication & Security
+SCRYP is a backend-driven freelancing platform developed to understand how production-level web applications are designed and implemented.
 
-- User Registration
+This repository contains the complete frontend application built using React.js. It interacts with a secure Spring Boot backend through REST APIs and implements authentication, authorization, protected routes, and dynamic data rendering.
+
+The objective of this project is not only to build an attractive UI but also to understand how frontend applications communicate with enterprise-level backend systems while maintaining scalability, security, and clean architecture.
+
+---
+
+## ✨ Key Features
+
+### 🔐 Authentication & Authorization
+
+- Secure User Registration
 - Secure Login
 - JWT Authentication
-- Automatic Token Storage
-- Logout Functionality
 - Protected Routes
-- Role-Based Access Control (Client & Freelancer)
+- Role-Based Access Control
+- Persistent Login Session
+- Automatic Logout Support
 
 ---
 
-### 👤 User Experience
+### 👨‍💻 User Experience
 
 - Responsive User Interface
-- Clean Navigation
-- Dynamic Routing
-- Error Handling
-- API Loading States
-- Form Validation
+- Dynamic Navigation
 - Reusable Components
+- Form Validation
+- Loading Indicators
+- Error Handling
+- Clean Layout Structure
 
 ---
 
 ### 🌐 Backend Integration
 
 - REST API Integration
-- Axios API Client
-- Secure Authorization Headers
-- Request & Response Handling
+- Axios HTTP Client
+- Authorization Headers
+- API Response Handling
 - Centralized API Configuration
 
 ---
 
-### ⚙️ Architecture
+### 🏗️ Architecture
 
-- Component-Based Design
+- Component-Based Architecture
 - Modular Folder Structure
-- Reusable UI Components
-- Environment Configuration
 - Separation of Concerns
+- Environment Configuration
+- Maintainable Codebase
 
 ---
 
-# 🛠 Tech Stack
+## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| React.js | Frontend Framework |
-| JavaScript (ES6+) | Programming Language |
-| Axios | HTTP Client |
-| React Router DOM | Client-Side Routing |
-| CSS | Styling |
-| JWT | Authentication |
-| Spring Boot REST APIs | Backend Integration |
+| Category | Technology |
+|----------|------------|
+| Frontend | React.js |
+| Language | JavaScript (ES6+) |
+| Routing | React Router DOM |
+| API Client | Axios |
+| Styling | CSS |
+| Authentication | JWT |
+| Backend | Spring Boot REST APIs |
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```
-src
+src/
 │
-├── assets
-├── components
-├── pages
-├── services
-├── hooks
-├── utils
-├── routes
-├── context
-├── styles
+├── assets/
+├── components/
+├── pages/
+├── services/
+├── hooks/
+├── context/
+├── routes/
+├── utils/
+├── styles/
 └── App.js
 ```
 
 ---
 
-# 🔄 Authentication Flow
+## 🔄 Authentication Workflow
 
 ```
 User Login
-      │
-      ▼
-Spring Boot API
-      │
-      ▼
+     │
+     ▼
+Spring Boot Backend
+     │
+     ▼
 JWT Token Generated
-      │
-      ▼
+     │
+     ▼
 Token Stored
-      │
-      ▼
+     │
+     ▼
 Protected Routes
-      │
-      ▼
-Authenticated User Session
+     │
+     ▼
+Authorized User Access
 ```
 
 ---
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
-### Clone Repository
+### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/scryp-frontend.git
+git clone https://github.com/OptimisticPanda2/scryp-frontend.git
 ```
 
-### Navigate
+### Navigate to the Project
 
 ```bash
 cd scryp-frontend
@@ -136,13 +138,13 @@ cd scryp-frontend
 npm install
 ```
 
-### Run Project
+### Start Development Server
 
 ```bash
 npm start
 ```
 
-The application will start on:
+Application will run on:
 
 ```
 http://localhost:3000
@@ -150,321 +152,98 @@ http://localhost:3000
 
 ---
 
-# 🔗 Backend
+## 🔗 Backend
 
-This frontend is designed to work with the SCRYP Spring Boot backend.
+The frontend communicates with a Spring Boot backend that provides:
 
-Backend Features include:
-
-- Spring Boot
+- REST APIs
 - Spring Security
 - JWT Authentication
-- Hibernate
-- MySQL
-- REST APIs
 - Role-Based Authorization
+- Hibernate ORM
+- MySQL Database
 
 ---
 
-# 📚 What I Learned
+## 📚 Learning Outcomes
 
-Developing SCRYP helped me strengthen my understanding of:
+Building SCRYP helped me strengthen my understanding of:
 
-- React component architecture
-- REST API integration
-- JWT authentication workflow
-- Role-based authorization
-- State management
-- Route protection
-- Frontend and backend communication
-- Debugging real-world application issues
-- Writing maintainable and reusable UI components
-
----
-
-# 📈 Future Enhancements
-
-- 💬 Real-Time Chat
-- 📎 File Sharing
-- ⭐ User Reviews & Ratings
-- ❤️ Favourite Freelancers
-- 🔔 Notifications
-- 👤 Complete User Profiles
-- 📊 Dashboard Analytics
-- 🌙 Dark Mode
-- 🌍 Internationalization (i18n)
-- 📱 Progressive Web App (PWA)
-
----
-
-# 📸 Screenshots
-
-> Add screenshots of the application here.
-
-
-
-# 🚀 SCRYP Frontend
-
-A modern React.js frontend for **SCRYP**, a full-stack freelancing platform built to simulate a production-ready marketplace where clients and freelancers can collaborate securely.
-
-The frontend communicates with a secure Spring Boot backend using REST APIs and JWT authentication while providing a clean, responsive, and role-based user experience.
-
----
-
-# 📌 Overview
-
-SCRYP is designed to replicate how modern freelance platforms operate by implementing secure authentication, role-based authorization, protected routes, and seamless backend integration.
-
-The primary objective of this project is to build a scalable frontend that follows industry-standard practices and integrates with an enterprise-level backend architecture.
-
----
-
-# ✨ Features
-
-### 🔐 Authentication & Security
-
-- User Registration
-- Secure Login
-- JWT Authentication
-- Automatic Token Storage
-- Logout Functionality
-- Protected Routes
-- Role-Based Access Control (Client & Freelancer)
-
----
-
-### 👤 User Experience
-
-- Responsive User Interface
-- Clean Navigation
-- Dynamic Routing
-- Error Handling
-- API Loading States
-- Form Validation
-- Reusable Components
-
----
-
-### 🌐 Backend Integration
-
+- React Component Architecture
 - REST API Integration
-- Axios API Client
-- Secure Authorization Headers
-- Request & Response Handling
-- Centralized API Configuration
-
----
-
-### ⚙️ Architecture
-
-- Component-Based Design
-- Modular Folder Structure
-- Reusable UI Components
-- Environment Configuration
-- Separation of Concerns
-
----
-
-# 🛠 Tech Stack
-
-| Technology | Purpose |
-|------------|---------|
-| React.js | Frontend Framework |
-| JavaScript (ES6+) | Programming Language |
-| Axios | HTTP Client |
-| React Router DOM | Client-Side Routing |
-| CSS | Styling |
-| JWT | Authentication |
-| Spring Boot REST APIs | Backend Integration |
-
----
-
-# 📂 Project Structure
-
-```
-src
-│
-├── assets
-├── components
-├── pages
-├── services
-├── hooks
-├── utils
-├── routes
-├── context
-├── styles
-└── App.js
-```
-
----
-
-# 🔄 Authentication Flow
-
-```
-User Login
-      │
-      ▼
-Spring Boot API
-      │
-      ▼
-JWT Token Generated
-      │
-      ▼
-Token Stored
-      │
-      ▼
-Protected Routes
-      │
-      ▼
-Authenticated User Session
-```
-
----
-
-# 🚀 Getting Started
-
-### Clone Repository
-
-```bash
-git clone https://github.com/your-username/scryp-frontend.git
-```
-
-### Navigate
-
-```bash
-cd scryp-frontend
-```
-
-### Install Dependencies
-
-```bash
-npm install
-```
-
-### Run Project
-
-```bash
-npm start
-```
-
-The application will start on:
-
-```
-http://localhost:3000
-```
-
----
-
-# 🔗 Backend
-
-This frontend is designed to work with the SCRYP Spring Boot backend.
-
-Backend Features include:
-
-- Spring Boot
-- Spring Security
 - JWT Authentication
-- Hibernate
-- MySQL
-- REST APIs
 - Role-Based Authorization
+- Protected Routing
+- Frontend & Backend Communication
+- State Management
+- Debugging Real-World Applications
+- Building Maintainable UI Components
+- Writing Clean and Scalable Frontend Code
 
 ---
 
-# 📚 What I Learned
+## 📈 Future Enhancements
 
-Developing SCRYP helped me strengthen my understanding of:
-
-- React component architecture
-- REST API integration
-- JWT authentication workflow
-- Role-based authorization
-- State management
-- Route protection
-- Frontend and backend communication
-- Debugging real-world application issues
-- Writing maintainable and reusable UI components
-
----
-
-# 📈 Future Enhancements
+The frontend will continue to evolve with additional production-level features, including:
 
 - 💬 Real-Time Chat
 - 📎 File Sharing
-- ⭐ User Reviews & Ratings
+- ⭐ Reviews & Ratings
 - ❤️ Favourite Freelancers
 - 🔔 Notifications
-- 👤 Complete User Profiles
+- 👤 Enhanced User Profiles
 - 📊 Dashboard Analytics
 - 🌙 Dark Mode
-- 🌍 Internationalization (i18n)
 - 📱 Progressive Web App (PWA)
 
 ---
 
+## 🎥 Project Demo
 
+Watch the application demo here:
 
-# 🎥 Demo
-
-> https://www.linkedin.com/posts/priyanshu-ps47-sharma_reactjs-webdevelopment-frontenddevelopment-ugcPost-7466426829688500224-CL1U/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFQnLacBSW15o81no8CdbJXkHonD_NBj7rU
-
----
-
-# 🤝 Contributing
-
-Contributions, issues, and feature requests are always welcome.
-
-Feel free to fork the repository and submit a pull request.
+**LinkedIn Demo:**  
+https://www.linkedin.com/posts/priyanshu-ps47-sharma_reactjs-webdevelopment-frontenddevelopment-ugcPost-7466426829688500224-CL1U/
 
 ---
 
-# 📄 License
+## 📸 Screenshots
 
-This project is developed for educational and portfolio purposes.
+> Screenshots will be added soon.
 
----
+Recommended Screenshots:
 
-## 👨‍💻 Author
-
-**Priyanshu Sharma**
-
-Java Backend Developer | Spring Boot Developer
-
-- LinkedIn: https://linkedin.com/in/priyanshu-ps47-sharma
-- GitHub: https://github.com/OptimisticPanda2
 - Home Page
 - Login Page
 - Registration Page
 - Dashboard
 - Freelancer Profile
+- Project Listing
 
 ---
 
-# 🎥 Demo
+## 🤝 Contributing
 
-> Add your deployed application or demo video link.
+Contributions, suggestions, and improvements are always welcome.
 
----
-
-# 🤝 Contributing
-
-Contributions, issues, and feature requests are always welcome.
-
-Feel free to fork the repository and submit a pull request.
-
----
-
-# 📄 License
-
-This project is developed for educational and portfolio purposes.
+If you find a bug or have an idea for enhancement, feel free to open an issue or submit a pull request.
 
 ---
 
 ## 👨‍💻 Author
 
-**Priyanshu Sharma**
+### Priyanshu Sharma
 
-Java Backend Developer | Spring Boot Developer
+**Java Backend Developer | Spring Boot Developer | Full Stack Enthusiast**
 
-- LinkedIn: https://linkedin.com/in/priyanshu-ps47-sharma
-- GitHub: https://github.com/OptimisticPanda2
+- 📧 Email: priyanshu.sre47016@gmail.com
+- 💼 LinkedIn: https://linkedin.com/in/priyanshu-ps47-sharma
+- 💻 GitHub: https://github.com/OptimisticPanda2
+
+---
+
+## ⭐ Support
+
+If you found this project helpful, consider giving it a ⭐ on GitHub. It motivates me to continue building and improving production-ready projects.
+
+---
