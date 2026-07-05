@@ -78,7 +78,7 @@ The objective of this project is not only to build an attractive UI but also to 
 
 ## 📂 Project Structure
 
-
+'''
 src/
 │
 ├── assets/
@@ -91,7 +91,7 @@ src/
 ├── utils/
 ├── styles/
 └── App.js
-
+'''
 
 ---
 
