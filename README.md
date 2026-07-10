@@ -236,7 +236,7 @@ If you find a bug or have an idea for enhancement, feel free to open an issue or
 **Java Backend Developer | Spring Boot Developer | Full Stack Enthusiast**
 
 - 📧 Email: priyanshu.sre47016@gmail.com
-- 💼 LinkedIn: https://linkedin.com/in/priyanshu-ps47-sharma
+- 💼 LinkedIn: https://www.linkedin.com/in/priyanshu-backend-dev
 - 💻 GitHub: https://github.com/OptimisticPanda2
 
 ---
